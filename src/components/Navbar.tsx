@@ -7,8 +7,13 @@ import { TbShoppingBag } from "react-icons/tb"
 import nikeLogo from "@/public/nike-logo.svg"
 import { ROUTES } from "@/constants"
 
-const Navbar = () => {
+interface NavbarProps {
+	onClickShoppingBtn: () => void
+}
+
+const Navbar = ({ onClickShoppingBtn }: NavbarProps) => {
 	const [isMobileMenuShow, setIsMobileMenuShown] = useState<boolean>(false)
+
 	return (
 		<nav className="flex z-10  flex-wrap justify-between relative">
 			<a href="/">
@@ -41,7 +46,10 @@ const Navbar = () => {
 					))}
 				</ul>
 			</div>
-			<div className="btn-press-anim fixed left-4 bottom-4 lg:static lg:mr-8">
+			<div
+				onClick={onClickShoppingBtn}
+				className="btn-press-anim fixed left-4 bottom-4 lg:static lg:mr-8"
+			>
 				<div className="h-12 w-12 cursor-pointer flex-center rounded-full bg-white shadow-md">
 					<TbShoppingBag />
 				</div>
