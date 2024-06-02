@@ -6,6 +6,7 @@ import ShoeDetails from "@/components/ShoeDetails"
 import NewArrivals from "@/components/NewArrivals"
 import Sidebar from "@/components/Sidebar"
 import { Fragment, useState } from "react"
+import CardItem from "@/components/CardItem"
 
 const Home = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -18,7 +19,12 @@ const Home = () => {
 				isOpen={isSidebarOpen}
 				onClickClose={() => setIsSidebarOpen(false)}
 			>
-				<p>Test</p>
+				<>
+					<h2 className="text-2xl font-bold">Cart</h2>
+					<CardItem item={SHOE_LIST[0]} />
+					<CardItem item={SHOE_LIST[1]} />
+					<CardItem item={SHOE_LIST[2]} />
+				</>
 			</Sidebar>
 		</div>
 	)

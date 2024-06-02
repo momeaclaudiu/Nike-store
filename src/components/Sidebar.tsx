@@ -8,7 +8,7 @@ const Sidebar = ({ children, isOpen, onClickClose }: SidebarProps) => {
 	return (
 		<div>
 			<div
-				className={`z-50 fixed top-0 right-0 p-5 h-full w-full md:w-[50%] lg:w-[35%] bg-white shadow-lg transition transform duration-300 ${
+				className={`overflow-y-auto z-50 fixed top-0 right-0 p-5 h-full w-full md:w-[55%] lg:w-[45%] xl:w-[35%] bg-white shadow-lg transition transform duration-300 ${
 					isOpen ? "translate-x-0" : "translate-x-full"
 				}`}
 			>

@@ -13,7 +13,7 @@ const NewArrivals: React.FC<NewArrivalsProps> = ({ items }) => {
 					NEW ARRIVALS
 				</div>
 			</div>
-			<div className="justify- mt-10 grid grid-cols-1 gap-x-6 gap-y-24 md:grid-cols-2 xl:grid-cols-[repeat(3,25%)]">
+			<div className="justify-between mt-10 grid grid-cols-1 gap-x-6 gap-y-24 md:grid-cols-2 xl:grid-cols-[repeat(3,25%)]">
 				{items.map((item) => (
 					<Card item={item} key={item.id} />
 				))}
