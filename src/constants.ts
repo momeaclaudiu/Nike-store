@@ -46,3 +46,9 @@ export const SHOE_LIST = [
 		price: 110,
 	},
 ]
+
+export const FAKE_CART_ITEMS = SHOE_LIST.map((shoe) => ({
+	product: shoe,
+	qty: 1,
+	size: 44,
+}))

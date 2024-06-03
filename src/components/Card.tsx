@@ -11,7 +11,7 @@ export interface CardProps {
 }
 
 const Card: React.FC<{ item: CardProps }> = ({
-	item: { id, src, className, title, description, price },
+	item: { src, className, title },
 }) => {
 	return (
 		<div

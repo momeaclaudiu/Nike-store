@@ -1,12 +1,14 @@
 "use client"
 
-import { SHOE_LIST } from "@/constants"
+import { useState } from "react"
+
+import { FAKE_CART_ITEMS, SHOE_LIST } from "@/constants"
+
 import Navbar from "@/components/Navbar"
 import ShoeDetails from "@/components/ShoeDetails"
 import NewArrivals from "@/components/NewArrivals"
 import Sidebar from "@/components/Sidebar"
-import { Fragment, useState } from "react"
-import CardItem from "@/components/CardItem"
+import Cart from "@/components/Cart"
 
 const Home = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
@@ -19,12 +21,7 @@ const Home = () => {
 				isOpen={isSidebarOpen}
 				onClickClose={() => setIsSidebarOpen(false)}
 			>
-				<>
-					<h2 className="text-2xl font-bold">Cart</h2>
-					<CardItem item={SHOE_LIST[0]} />
-					<CardItem item={SHOE_LIST[1]} />
-					<CardItem item={SHOE_LIST[2]} />
-				</>
+				<Cart cartItems={FAKE_CART_ITEMS} />
 			</Sidebar>
 		</div>
 	)

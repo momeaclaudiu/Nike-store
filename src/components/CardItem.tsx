@@ -4,14 +4,19 @@ import { CiTrash } from "react-icons/ci"
 import { CardProps } from "./Card"
 import Select from "./Select"
 import { QTY, SIZES } from "@/constants"
+import { CartItem } from "./Cart"
 
 interface CardItemProps {
-	item: CardProps
+	item: CartItem
 }
 
-const CardItem = ({
-	item: { title, description, price, id, className, src },
-}: CardItemProps) => {
+const CardItem = ({ item }: CardItemProps) => {
+	const {
+		product: { title, description, price, src },
+		size,
+		qty,
+	} = item
+
 	return (
 		<div className="cursor-pointer hover:bg-[#DAFFA2] bg-gray-50 p-2 space-y-2">
 			{/* Image */}
@@ -30,11 +35,21 @@ const CardItem = ({
 				<div className="flex space-x-6">
 					<div>
 						<div className="font-bold">SIZE</div>
-						<Select options={SIZES} title="" className="w-16 p-1" />
+						<Select
+							defaultValue={size}
+							options={SIZES}
+							title=""
+							className="w-16 p-1 pl-2"
+						/>
 					</div>
 					<div>
 						<div className="font-bold">QTY</div>
-						<Select options={QTY} title="" className="w-16 p-1" />
+						<Select
+							defaultValue={qty}
+							options={QTY}
+							title=""
+							className="w-16 p-1 pl-2"
+						/>
 					</div>
 				</div>
 				<button>

@@ -5,13 +5,14 @@ interface SelectProps {
 	title: string
 	options: number[]
 	className: string
+	defaultValue: number
 }
 
-const Select = ({ title, options, className }: SelectProps) => {
+const Select = ({ title, options, className, defaultValue }: SelectProps) => {
 	return (
 		<div className="relative">
 			<select
-				defaultValue=""
+				defaultValue={defaultValue}
 				className={twMerge(
 					`w-24 appearance-none border border-gray-300 p-4 bg-white ${className}`
 				)}
