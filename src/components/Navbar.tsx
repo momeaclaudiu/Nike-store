@@ -17,11 +17,15 @@ const Navbar = ({ onClickShoppingBtn }: NavbarProps) => {
 	return (
 		<nav className="flex z-10  flex-wrap justify-between relative">
 			<a href="/">
-				<Image src={nikeLogo} alt="brand-logo" />
+				<Image
+					src={nikeLogo}
+					alt="brand-logo"
+					className="dark:invert"
+				/>
 			</a>
 			<button
 				onClick={() => setIsMobileMenuShown(!isMobileMenuShow)}
-				className="lg:hidden rounded-lg p-2 focus:ring-2 focus:ring-gray-200 hover:bg-gray-100"
+				className="lg:hidden rounded-lg p-2 focus:ring-2 focus:ring-gray-200 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
 			>
 				<RxHamburgerMenu size={25} />
 			</button>
@@ -31,7 +35,7 @@ const Navbar = ({ onClickShoppingBtn }: NavbarProps) => {
 					isMobileMenuShow ? "" : "hidden"
 				}  w-full lg:w-auto lg:block`}
 			>
-				<ul className="lg:space-x-8 flex flex-col lg:flex-row bg-gray-50 lg:bg-transparent text-lg border lg:border-none border-gray-100 rounded-lg p-4">
+				<ul className="lg:space-x-8 flex flex-col lg:flex-row bg-gray-50 lg:bg-transparent text-lg border lg:border-none border-gray-100 rounded-lg p-4 lg:dark:text-white">
 					{ROUTES.map((route, index) => (
 						<li
 							className={`lg:hover:bg-transparent lg:hover:text-blue-500 cursor-pointer rounded py-2 px-3 ${

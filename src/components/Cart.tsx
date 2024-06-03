@@ -14,7 +14,7 @@ interface CartProps {
 const Cart = ({ cartItems }: CartProps) => {
 	return (
 		<>
-			<h2 className="text-4xl font-bold mb-5">Cart</h2>
+			<h2 className="dark:text-white text-4xl font-bold mb-5">Cart</h2>
 			<ul className="space-y-5">
 				{cartItems.map((item) => (
 					<li key={item.product.id}>

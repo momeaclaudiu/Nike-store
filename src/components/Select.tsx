@@ -4,13 +4,13 @@ import { twMerge } from "tailwind-merge"
 interface SelectProps {
 	title: string
 	options: number[]
-	className: string
-	defaultValue: number
+	className?: string
+	defaultValue?: number
 }
 
 const Select = ({ title, options, className, defaultValue }: SelectProps) => {
 	return (
-		<div className="relative">
+		<div className="relative dark:text-black">
 			<select
 				defaultValue={defaultValue}
 				className={twMerge(
