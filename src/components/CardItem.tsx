@@ -1,7 +1,6 @@
 import Image from "next/image"
 import { CiTrash } from "react-icons/ci"
 
-import { CardProps } from "./Card"
 import Select from "./Select"
 import { QTY, SIZES } from "@/constants"
 import { CartItem } from "./Cart"

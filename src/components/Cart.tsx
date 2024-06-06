@@ -1,8 +1,8 @@
-import { CardProps } from "./Card"
+import { CardDetails } from "@/constants"
 import CardItem from "./CardItem"
 
 export type CartItem = {
-	product: CardProps
+	product: CardDetails
 	qty: number
 	size: number
 }

@@ -1,3 +1,8 @@
+import {
+	StaticImageData,
+	StaticImport,
+} from "next/dist/shared/lib/get-img-props"
+
 export const ROUTES = ["Home", "About", "Services", "Pricing", "Contact"]
 
 import nike1 from "../public/n1-min.png"
@@ -47,8 +52,11 @@ export const SHOE_LIST = [
 	},
 ]
 
-export const FAKE_CART_ITEMS = SHOE_LIST.map((shoe) => ({
-	product: shoe,
-	qty: 1,
-	size: 44,
-}))
+export interface CardDetails {
+	id: number
+	src: StaticImageData
+	className: string
+	title: string
+	description: string
+	price: number
+}

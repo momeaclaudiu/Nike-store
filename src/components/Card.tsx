@@ -1,20 +1,17 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props"
+import { FC } from "react"
 import Image from "next/image"
+import { CardDetails } from "@/constants"
 
-export interface CardProps {
-	id: number
-	src: string | StaticImport
-	className: string
-	title: string
-	description: string
-	price: number
+interface CardProps {
+	item: CardDetails
+	onClick: (arg0: CardDetails) => void
 }
 
-const Card: React.FC<{ item: CardProps }> = ({
-	item: { src, className, title },
-}) => {
+const Card: FC<CardProps> = ({ item, onClick }) => {
+	const { src, className, title } = item
 	return (
 		<div
+			onClick={() => onClick(item)}
 			className={`transition transform hover:scale-105 cursor-pointer max-w-xl ${className}`}
 		>
 			<div className="p-8">

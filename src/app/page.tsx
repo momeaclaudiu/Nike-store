@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-import { FAKE_CART_ITEMS, SHOE_LIST } from "@/constants"
+import { SHOE_LIST } from "@/constants"
 
 import Navbar from "@/components/Navbar"
 import ShoeDetails from "@/components/ShoeDetails"
@@ -13,6 +13,7 @@ import { BiMoon, BiSun } from "react-icons/bi"
 
 const Home = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+	const [currentShoe, setCurrentShoe] = useState(SHOE_LIST[0])
 
 	useEffect(() => {
 		const isDarkMode = localStorage.getItem("isDarkMode")
@@ -35,13 +36,13 @@ const Home = () => {
 	return (
 		<div className="animate-fadeIn p-10 xl:px-24 dark:bg-night">
 			<Navbar onClickShoppingBtn={() => setIsSidebarOpen(true)} />
-			<ShoeDetails />
-			<NewArrivals items={SHOE_LIST} />
+			<ShoeDetails shoe={currentShoe} />
+			<NewArrivals items={SHOE_LIST} onClickCard={setCurrentShoe} />
 			<Sidebar
 				isOpen={isSidebarOpen}
 				onClickClose={() => setIsSidebarOpen(false)}
 			>
-				<Cart cartItems={FAKE_CART_ITEMS} />
+				<Cart cartItems={[]} />
 			</Sidebar>
 			<div className="fixed bottom-4 right-4">
 				<button

@@ -1,10 +1,16 @@
+import { FC } from "react"
 import Image from "next/image"
-import nike270model from "@/public/n1-min.png"
 
-import { QTY, SIZES } from "@/constants"
+import { CardDetails, QTY, SIZES } from "@/constants"
 import Select from "./Select"
 
-const ShoeDetails = () => {
+interface ShoeDetailsProps {
+	shoe: CardDetails
+}
+
+const ShoeDetails: FC<ShoeDetailsProps> = ({
+	shoe: { title, price, description, src },
+}) => {
 	return (
 		<div className="flex flex-col space-y-4 lg:flex-row-reverse dark:text-white">
 			{/*Shoe image*/}
@@ -12,7 +18,7 @@ const ShoeDetails = () => {
 				<div className="h-full relative flex-center bg-gradient-to-br from-[#f637CF] from-5% via-[#E3D876] via-40% to-[#4DD4C6]">
 					<Image
 						className="animate-float"
-						src={nike270model}
+						src={src}
 						alt="nike-air-max-270"
 						priority
 					/>
@@ -20,17 +26,11 @@ const ShoeDetails = () => {
 			</div>
 			<div className="flex-1 space-y-6">
 				{/*Shoe text details*/}
-				<div className="text-5xl font-black md:text-9xl">
-					Nike Air max 270
-				</div>
-				<div className="font-medium md:text-xl">
-					{
-						"The Nike Air Max 270 is a lifestyle shoe that's sure to turn heads with its vibrant color gradient"
-					}
-				</div>
+				<div className="text-5xl font-black md:text-9xl">{title}</div>
+				<div className="font-medium md:text-xl">{description}</div>
 				<div className="flex space-x-6">
 					<div className="text-3xl font-extrabold md:text-6xl">
-						100 $
+						{price}
 					</div>
 					<Select title={"Qty"} options={QTY} />
 					<Select title={"Size"} options={SIZES} />
