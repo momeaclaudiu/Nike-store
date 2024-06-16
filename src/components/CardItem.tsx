@@ -7,11 +7,12 @@ import { QTY, SIZES, CartItem } from "@/constants"
 
 interface CardItemProps {
 	item: CartItem
+	onClickTrash: (productId: number | undefined) => void
 }
 
-const CardItem = ({ item }: CardItemProps) => {
+const CardItem = ({ item, onClickTrash }: CardItemProps) => {
 	const {
-		shoe: { title, description, price, src },
+		shoe: { title, description, price, src, id },
 		size,
 		qty,
 	} = item
@@ -51,10 +52,10 @@ const CardItem = ({ item }: CardItemProps) => {
 						/>
 					</div>
 				</div>
-				<button>
+				<button onClick={() => onClickTrash(id)}>
 					<CiTrash
 						size={25}
-						className="text-black dark:text-white hover:text-red-400 fill-red"
+						className="text-black dark:text-white hover:fill-red-500"
 					/>
 				</button>
 			</div>

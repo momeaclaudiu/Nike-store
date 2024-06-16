@@ -43,22 +43,28 @@ const Home = () => {
 
 	const addToCart = ({ shoe, qty, size }: AddToCart) => {
 		if (qty && size) {
-			const updatedCartItems = [...cartItems]
-			const existingItemIndex = cartItems.findIndex(
-				(item) => item.shoe.id === shoe.id
-			)
-			if (existingItemIndex > -1) {
-				updatedCartItems[existingItemIndex] = {
-					...updatedCartItems[existingItemIndex],
-					qty,
-					size,
-				}
-			} else {
-				updatedCartItems.push({ shoe, qty, size })
-			}
+			setCartItems((prevCartItems) => {
+				const existingItem = prevCartItems.find(
+					(item) => item.shoe.id === shoe.id
+				)
 
-			setCartItems(updatedCartItems)
+				if (existingItem) {
+					// Update the existing item
+					return prevCartItems.map((item) =>
+						item.shoe.id === shoe.id ? { ...item, qty, size } : item
+					)
+				} else {
+					// Add the new item
+					return [...prevCartItems, { shoe, qty, size }]
+				}
+			})
 		}
+	}
+
+	const removeFromCart = (productId: number | undefined) => {
+		setCartItems((prev) =>
+			prev.filter((item) => item.shoe.id !== productId)
+		)
 	}
 
 	return (
@@ -70,7 +76,7 @@ const Home = () => {
 				isOpen={isSidebarOpen}
 				onClickClose={() => setIsSidebarOpen(false)}
 			>
-				<Cart cartItems={cartItems} />
+				<Cart cartItems={cartItems} onClickTrash={removeFromCart} />
 			</Sidebar>
 			<div className="fixed bottom-4 right-4">
 				<button
