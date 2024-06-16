@@ -68,7 +68,7 @@ const Home = () => {
 	}
 
 	return (
-		<div className="animate-fadeIn p-10 xl:px-24 dark:bg-night">
+		<div className="animate-fadeIn px-10 py-5 xl:px-24 overflow-hidden w-full dark:bg-night">
 			<Navbar onClickShoppingBtn={() => setIsSidebarOpen(true)} />
 			<ShoeDetails shoe={currentShoe} onClickAdd={addToCart} />
 			<NewArrivals items={SHOE_LIST} onClickCard={setCurrentShoe} />

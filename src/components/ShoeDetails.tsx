@@ -62,7 +62,7 @@ const ShoeDetails: FC<ShoeDetailsProps> = ({ shoe, onClickAdd }) => {
 				</div>
 
 				{/*Shoe buttons and links*/}
-				<div className="space-x-10">
+				<div className="flex items-center sm:space-x-10 space-x-6">
 					<button
 						onClick={() =>
 							onClickAdd({ shoe, qty: form.qty, size: form.size })
@@ -73,7 +73,7 @@ const ShoeDetails: FC<ShoeDetailsProps> = ({ shoe, onClickAdd }) => {
 					</button>
 					<a
 						href="#"
-						className="text-lg font-bold underline dark:text-white"
+						className="sm:text-lg text-sm text-wrap font-bold underline dark:text-white"
 					>
 						View details
 					</a>

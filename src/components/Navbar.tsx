@@ -22,12 +22,12 @@ const Navbar = ({ onClickShoppingBtn }: NavbarProps) => {
 				<Image
 					src={nikeLogo}
 					alt="brand-logo"
-					className="dark:invert"
+					className="dark:invert mb-4"
 				/>
 			</a>
 			<button
 				onClick={() => setIsMobileMenuShown(!isMobileMenuShow)}
-				className="lg:hidden rounded-lg p-2 focus:ring-2 focus:ring-gray-200 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+				className="lg:hidden rounded-lg mb-4 p-2 focus:ring-2 focus:ring-gray-200 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
 			>
 				<RxHamburgerMenu size={25} />
 			</button>
@@ -35,7 +35,7 @@ const Navbar = ({ onClickShoppingBtn }: NavbarProps) => {
 			<div
 				className={`${
 					isMobileMenuShow ? "" : "hidden"
-				}  w-full lg:w-auto lg:block`}
+				} w-full lg:w-auto lg:block`}
 			>
 				<ul className="lg:space-x-8 flex flex-col lg:flex-row bg-gray-50 lg:bg-transparent text-lg border lg:border-none border-gray-100 rounded-lg p-4 lg:dark:text-white">
 					{ROUTES.map((route, index) => (
