@@ -20,7 +20,7 @@ const CardItem = ({ item, onClickTrash }: CardItemProps) => {
 	return (
 		<div className="cursor-pointer hover:bg-[#DAFFA2] bg-gray-50 dark:bg-transparent dark:hover:bg-night-50 p-2 space-y-2">
 			{/* Image */}
-			<div className="flex space-x-2  ">
+			<div className="flex flex-center space-x-2  ">
 				<Image src={src} alt={title} height={96} />
 				<div className="space-y-2">
 					{/* Title & Description */}
@@ -31,7 +31,7 @@ const CardItem = ({ item, onClickTrash }: CardItemProps) => {
 				<div className="font-bold dark:text-white">{price}$</div>
 			</div>
 
-			<div className="flex justify-between pl-32">
+			<div className="flex justify-between items-end pl-32">
 				<div className="flex space-x-6">
 					<div>
 						<div className="font-bold dark:text-white">SIZE</div>
@@ -55,7 +55,7 @@ const CardItem = ({ item, onClickTrash }: CardItemProps) => {
 				<button onClick={() => onClickTrash(id)}>
 					<CiTrash
 						size={25}
-						className="text-black dark:text-white hover:fill-red-500"
+						className="text-black dark:text-white hover:fill-red-500 mb-2"
 					/>
 				</button>
 			</div>
