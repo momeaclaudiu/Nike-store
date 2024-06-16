@@ -2,10 +2,12 @@
 
 import { useState } from "react"
 import Image from "next/image"
+
+import { ROUTES } from "@/constants"
+
 import { RxHamburgerMenu } from "react-icons/rx"
 import { TbShoppingBag } from "react-icons/tb"
 import nikeLogo from "@/public/nike-logo.svg"
-import { ROUTES } from "@/constants"
 
 interface NavbarProps {
 	onClickShoppingBtn: () => void
@@ -16,7 +18,7 @@ const Navbar = ({ onClickShoppingBtn }: NavbarProps) => {
 
 	return (
 		<nav className="flex z-10  flex-wrap justify-between relative">
-			<a href="/">
+			<a>
 				<Image
 					src={nikeLogo}
 					alt="brand-logo"

@@ -1,11 +1,5 @@
-import { CardDetails } from "@/constants"
+import { CartItem } from "@/constants"
 import CardItem from "./CardItem"
-
-export type CartItem = {
-	product: CardDetails
-	qty: number
-	size: number
-}
 
 interface CartProps {
 	cartItems: CartItem[]
@@ -17,7 +11,7 @@ const Cart = ({ cartItems }: CartProps) => {
 			<h2 className="dark:text-white text-4xl font-bold mb-5">Cart</h2>
 			<ul className="space-y-5">
 				{cartItems.map((item) => (
-					<li key={item.product.id}>
+					<li key={item.shoe.id}>
 						<CardItem item={item} />
 					</li>
 				))}

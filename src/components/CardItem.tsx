@@ -2,8 +2,8 @@ import Image from "next/image"
 import { CiTrash } from "react-icons/ci"
 
 import Select from "./Select"
-import { QTY, SIZES } from "@/constants"
-import { CartItem } from "./Cart"
+
+import { QTY, SIZES, CartItem } from "@/constants"
 
 interface CardItemProps {
 	item: CartItem
@@ -11,7 +11,7 @@ interface CardItemProps {
 
 const CardItem = ({ item }: CardItemProps) => {
 	const {
-		product: { title, description, price, src },
+		shoe: { title, description, price, src },
 		size,
 		qty,
 	} = item
@@ -35,7 +35,7 @@ const CardItem = ({ item }: CardItemProps) => {
 					<div>
 						<div className="font-bold dark:text-white">SIZE</div>
 						<Select
-							defaultValue={size}
+							value={size}
 							options={SIZES}
 							title=""
 							className="w-16 p-1 pl-2"
@@ -44,7 +44,7 @@ const CardItem = ({ item }: CardItemProps) => {
 					<div>
 						<div className="font-bold dark:text-white">QTY</div>
 						<Select
-							defaultValue={qty}
+							value={qty}
 							options={QTY}
 							title=""
 							className="w-16 p-1 pl-2"

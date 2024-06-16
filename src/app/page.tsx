@@ -2,18 +2,26 @@
 
 import { useEffect, useState } from "react"
 
-import { SHOE_LIST } from "@/constants"
+import { AddToCart, CardDetails, SHOE_LIST } from "@/constants"
 
+import { BiMoon, BiSun } from "react-icons/bi"
+
+import Cart from "@/components/Cart"
 import Navbar from "@/components/Navbar"
+import Sidebar from "@/components/Sidebar"
 import ShoeDetails from "@/components/ShoeDetails"
 import NewArrivals from "@/components/NewArrivals"
-import Sidebar from "@/components/Sidebar"
-import Cart from "@/components/Cart"
-import { BiMoon, BiSun } from "react-icons/bi"
+
+interface CartItem {
+	shoe: CardDetails
+	qty: number
+	size: number
+}
 
 const Home = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-	const [currentShoe, setCurrentShoe] = useState(SHOE_LIST[0])
+	const [currentShoe, setCurrentShoe] = useState<CardDetails>(SHOE_LIST[0])
+	const [cartItems, setCartItems] = useState<CartItem[]>([])
 
 	useEffect(() => {
 		const isDarkMode = localStorage.getItem("isDarkMode")
@@ -33,16 +41,36 @@ const Home = () => {
 		)
 	}
 
+	const addToCart = ({ shoe, qty, size }: AddToCart) => {
+		if (qty && size) {
+			const updatedCartItems = [...cartItems]
+			const existingItemIndex = cartItems.findIndex(
+				(item) => item.shoe.id === shoe.id
+			)
+			if (existingItemIndex > -1) {
+				updatedCartItems[existingItemIndex] = {
+					...updatedCartItems[existingItemIndex],
+					qty,
+					size,
+				}
+			} else {
+				updatedCartItems.push({ shoe, qty, size })
+			}
+
+			setCartItems(updatedCartItems)
+		}
+	}
+
 	return (
 		<div className="animate-fadeIn p-10 xl:px-24 dark:bg-night">
 			<Navbar onClickShoppingBtn={() => setIsSidebarOpen(true)} />
-			<ShoeDetails shoe={currentShoe} />
+			<ShoeDetails shoe={currentShoe} onClickAdd={addToCart} />
 			<NewArrivals items={SHOE_LIST} onClickCard={setCurrentShoe} />
 			<Sidebar
 				isOpen={isSidebarOpen}
 				onClickClose={() => setIsSidebarOpen(false)}
 			>
-				<Cart cartItems={[]} />
+				<Cart cartItems={cartItems} />
 			</Sidebar>
 			<div className="fixed bottom-4 right-4">
 				<button

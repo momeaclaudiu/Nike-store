@@ -1,7 +1,4 @@
-import {
-	StaticImageData,
-	StaticImport,
-} from "next/dist/shared/lib/get-img-props"
+import { StaticImageData } from "next/dist/shared/lib/get-img-props"
 
 export const ROUTES = ["Home", "About", "Services", "Pricing", "Contact"]
 
@@ -52,11 +49,24 @@ export const SHOE_LIST = [
 	},
 ]
 
-export interface CardDetails {
-	id: number
+//Typescript types
+export type CardDetails = {
+	id?: number
 	src: StaticImageData
-	className: string
+	className?: string
 	title: string
 	description: string
 	price: number
+}
+
+export type AddToCart = {
+	shoe: CardDetails
+	qty: number | null
+	size: number | null
+}
+
+export type CartItem = {
+	shoe: CardDetails
+	qty: number
+	size: number
 }

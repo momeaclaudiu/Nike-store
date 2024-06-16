@@ -2,17 +2,25 @@ import { IoIosArrowDown } from "react-icons/io"
 import { twMerge } from "tailwind-merge"
 
 interface SelectProps {
+	value: number | null
+	onChange?: (value: number) => void
 	title: string
 	options: number[]
 	className?: string
-	defaultValue?: number
 }
 
-const Select = ({ title, options, className, defaultValue }: SelectProps) => {
+const Select = ({
+	title,
+	options,
+	className,
+	value,
+	onChange = () => null,
+}: SelectProps) => {
 	return (
 		<div className="relative dark:text-black">
 			<select
-				defaultValue={defaultValue}
+				onChange={(e) => onChange(+e.target.value)}
+				value={value || ""}
 				className={twMerge(
 					`w-24 appearance-none border border-gray-300 p-4 bg-white ${className}`
 				)}
